@@ -1,21 +1,46 @@
 aid: playsome
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/playsome.png
 name: Playsome
-description: 'Playsome is a company surfaced as a portfolio company of eqt-ventures and added to the API
-  Evangelist network as a stub for enrichment. Sector: mobile-gaming. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Playsome (Playsome Ltd. / Playsome Oy) is a Helsinki, Finland mobile game studio that
+  builds free-to-play games combining deep gameplay with polished visuals under the philosophy
+  of making "big games with a small team". Its flagship title is Friends & Dragons, a
+  cooperative multiplayer puzzle-RPG for iOS and Android featuring 150+ collectible heroes and
+  700+ puzzles and dungeons. The company is backed by gaming-focused venture firms Play Ventures
+  and EQT. Playsome does not publish a traditional developer API, but its Wix-hosted website
+  exposes a live Wix Site MCP endpoint for agentic AI access, letting agents retrieve business
+  details, search the site, and start bookings/purchases without scraping.
 url: https://raw.githubusercontent.com/api-evangelist/playsome/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - eqt-ventures
+- play-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Mobile Gaming
+- Games
+- Game Studio
+- Free-to-Play
+- Finland
+- Consumer
+- MCP
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +50,21 @@ maintainers:
 common:
 - type: Website
   url: https://www.playsome.fi
+- type: PrivacyPolicy
+  url: https://www.playsome.fi/privacy-policy
+- type: TermsOfService
+  url: https://www.playsome.fi/terms-of-service
+- type: Support
+  url: mailto:support@playsome.fi
+- type: MCPServer
+  name: Playsome Wix Site MCP (Site Visitor Assistant)
+  url: mcp/playsome-mcp.yml
+- type: LLMsTxt
+  url: llms/playsome-llms.txt
+- type: DomainSecurity
+  url: security/playsome-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v1
