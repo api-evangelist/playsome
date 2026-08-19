@@ -2,12 +2,10 @@ generated: '2026-07-20'
 method: searched
 status: published
 source: https://www.playsome.fi/llms.txt
-notes: >-
-  Playsome's website runs on Wix, which exposes a live Wix Site MCP endpoint for
-  agentic AI access. Verified live via JSON-RPC initialize + tools/list (HTTP 200).
-  The endpoint advertises itself as "Site Visitor Assistant for site Playsome Games".
-  No authentication is required; only public site information is accessible. This is a
-  Wix-platform-provided MCP surface, not a bespoke Playsome-authored server.
+notes: Playsome's website runs on Wix, which exposes a live Wix Site MCP endpoint for agentic AI access.
+  Verified live via JSON-RPC initialize + tools/list (HTTP 200). The endpoint advertises itself as "Site
+  Visitor Assistant for site Playsome Games". No authentication is required; only public site information
+  is accessible. This is a Wix-platform-provided MCP surface, not a bespoke Playsome-authored server.
 server:
   name: playsome-site-visitor-assistant
   transport: http
@@ -18,32 +16,46 @@ server:
   platform: Wix Site MCP
   docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
 tools:
-  - name: GetBusinessDetails
-    description: Retrieves business and site details such as timezone, email, phone, and address.
-  - name: SearchInSite
-    description: Searches the site for information.
-    parameters: [searchTerm]
-  - name: SearchSiteApiDocs
-    description: >-
-      Retrieves the API documentation for the Wix business solutions installed on this
-      site and informs the AI client how to use the APIs.
-    parameters: [searchTerm]
-  - name: GenerateVisitorToken
-    description: Creates a new visitor session and obtains a visitor access token for the site.
-  - name: CallWixSiteAPI
-    description: >-
-      Calls API methods on the site to perform actions on a visitor's behalf, such as
-      querying site data, booking an appointment, or starting a purchase.
-    parameters: [visitorToken, url, method, body]
-  - name: ReadFullDocsArticle
-    description: Fetches a complete article from the Wix developer documentation portal.
-    parameters: [articleUrl]
-  - name: ReadFullDocsMethodSchema
-    description: Fetches the full schema for a Wix API method.
-    parameters: [articleUrl]
+- name: GetBusinessDetails
+  description: Retrieves business and site details such as timezone, email, phone, and address.
+- name: SearchInSite
+  description: Searches the site for information.
+  parameters:
+  - searchTerm
+- name: SearchSiteApiDocs
+  description: Retrieves the API documentation for the Wix business solutions installed on this site and
+    informs the AI client how to use the APIs.
+  parameters:
+  - searchTerm
+- name: GenerateVisitorToken
+  description: Creates a new visitor session and obtains a visitor access token for the site.
+- name: CallWixSiteAPI
+  description: Calls API methods on the site to perform actions on a visitor's behalf, such as querying
+    site data, booking an appointment, or starting a purchase.
+  parameters:
+  - visitorToken
+  - url
+  - method
+  - body
+- name: ReadFullDocsArticle
+  description: Fetches a complete article from the Wix developer documentation portal.
+  parameters:
+  - articleUrl
+- name: ReadFullDocsMethodSchema
+  description: Fetches the full schema for a Wix API method.
+  parameters:
+  - articleUrl
 capabilities:
-  - Get business details (contact info, location, hours)
-  - Discover products and services on offer
-  - Book services and make reservations
-  - Start a purchase and be directed to the site to complete checkout
-  - Ask questions and get relevant answers without browsing the site
+- Get business details (contact info, location, hours)
+- Discover products and services on offer
+- Book services and make reservations
+- Start a purchase and be directed to the site to complete checkout
+- Ask questions and get relevant answers without browsing the site
+deployment:
+  mode: remote
+  endpoint: https://www.playsome.fi/_api/mcp
+  verified: probed
+  probe: live
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
